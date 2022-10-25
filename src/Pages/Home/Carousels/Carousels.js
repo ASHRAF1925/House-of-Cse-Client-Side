@@ -4,7 +4,7 @@ import './Carousels.css'
 
 const Carousels = () => {
     return (
-        <Carousel className="mt-3">
+        <Carousel className="mt-3 ">
       <Carousel.Item>
         <img
           className="d-block w-100"

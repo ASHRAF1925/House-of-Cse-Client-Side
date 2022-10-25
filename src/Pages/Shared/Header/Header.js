@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div>
         <Navbar expand="lg" id='backgroundColor'>
-      <div className="d-flex  me-auto container">
+      <div className="d-flex  me-auto container ">
         <div>
           <Navbar.Brand href="/">
             <img
@@ -25,9 +25,9 @@ const Header = () => {
          House Of CSE
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav variant="pills" defaultActiveKey="/" className="ms-auto my-auto">
+        <Navbar.Toggle aria-controls="basic-navbar-nav " />
+        <Navbar.Collapse id="basic-navbar-nav ">
+          <Nav variant="pills" defaultActiveKey="/" className="ms-auto my-auto align-items-center ">
           <Nav.Item>
               <Nav.Link eventKey="/"><Link to='/' className="text-decoration-none  text_color"> Home</Link></Nav.Link>
             </Nav.Item>
