@@ -1,0 +1,9 @@
+.text_back_blurr {
+    backdrop-filter: blur(10px) saturate(70%);
+    color: white;
+    font-weight: 900;
+  }
+  #white{
+    color: aliceblue;
+  }
+  
