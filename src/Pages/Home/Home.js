@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Home.css";
 import { useLoaderData } from "react-router-dom";
+import CarouselItem_for_course from "./CarouselItem_for_course/CarouselItem_for_course";
 const Home = () => {
   const courses = useLoaderData();
 
@@ -18,10 +19,13 @@ const Home = () => {
   return (
     <div className="Home container p-0 ">
       <Carousels></Carousels>
+      <h1>About Us{best_courses.length}</h1>
+
       <Container className="my-0 ">
         <Row>
           <Col className="bg-primary p-3 rounded-right" lg="8">
-            <h1>About Us</h1>
+            <h1>About Us{best_courses.length}</h1>
+
             <h4>Welcome to House of CSE!</h4>
             <p>
               We are offering some courses of Computer Science and
@@ -38,6 +42,9 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+      {best_courses.map((course) => {
+        <h1>why</h1>;
+      })}
 
       {/* carousel start  */}
       <Container className="my-0">
@@ -53,22 +60,16 @@ const Home = () => {
           </Col>
           <Col className="bg-primary p-3 rounded-right" lg="6">
             <Carousel className="container">
-              {best_courses.map((course) => {
-                <Carousel.Item>
-                  <Card className="bg-danger">
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                      <Card.Title>course.course_name</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </Card.Text>
-                      <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                  </Card>
-                </Carousel.Item>
-              })}
+            <CarouselItem_for_course></CarouselItem_for_course>
+             <CarouselItem_for_course></CarouselItem_for_course>
             </Carousel>
+            {/* {best_courses.map(
+              (course) => (
+                <h1>hello</h1>
+              )
+
+              // <CarouselItem_for_course></CarouselItem_for_course>
+            )} */}
           </Col>
           <Col className="bg-success p-3 rounded-left" lg="3">
             <img
@@ -93,6 +94,9 @@ const Home = () => {
           Large button
         </Button>{" "}
       </div>
+      {/* {best_courses.map((course) => {
+                <CarouselItem_for_course></CarouselItem_for_course>
+              })} */}
     </div>
   );
 };
