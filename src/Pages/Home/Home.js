@@ -6,8 +6,8 @@ import Carousels from './Carousels/Carousels';
 const Home = () => {
     return (
         <div>
-          <Header></Header>
-          <Carousels></Carousels>
+        
+          <Carousels ></Carousels>
         </div>
     );
 };
