@@ -12,7 +12,7 @@ export const routes = createBrowserRouter([
     element: <Main></Main>,
     children: [
       { path: "/", loader:  async()=>{
-        return fetch('http://localhost:5000/courses');
+        return fetch('http://localhost:5000/courses_details');
       } ,element: <Home></Home> },
       { path: "/Courses", element: <Courses></Courses> },
       { path: "/Blogs", element: <Blogs></Blogs> },

@@ -9,12 +9,15 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Home.css";
 import { useLoaderData } from "react-router-dom";
-import CarouselItem_for_course from "./CarouselItem_for_course/CarouselItem_for_course";
+
+import AutoPlay from "./Item_Carousel/Item_carousel";
+
+
 const Home = () => {
   const courses = useLoaderData();
 
   const best_courses = courses.filter((course) => course.Rating > 7);
-  console.log(best_courses);
+
 
   return (
     <div className="Home container p-0 ">
@@ -59,17 +62,7 @@ const Home = () => {
             </p>
           </Col>
           <Col className="bg-primary p-3 rounded-right" lg="6">
-            <Carousel className="container">
-            <CarouselItem_for_course></CarouselItem_for_course>
-             <CarouselItem_for_course></CarouselItem_for_course>
-            </Carousel>
-            {/* {best_courses.map(
-              (course) => (
-                <h1>hello</h1>
-              )
-
-              // <CarouselItem_for_course></CarouselItem_for_course>
-            )} */}
+            <AutoPlay courses={best_courses}></AutoPlay>
           </Col>
           <Col className="bg-success p-3 rounded-left" lg="3">
             <img
