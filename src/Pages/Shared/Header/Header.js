@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import logo from "../../../Assets/Images/logo-removebg-preview.png";
 import "./Header.css"
+import { useContext } from 'react';
+import { AuthContext } from '../../../Contexts/UserContext';
 const Header = () => {
+
+  const {user}=useContext(AuthContext);
     return (
         <div>
         <Navbar expand="lg" id='backgroundColor'>
@@ -49,15 +53,17 @@ const Header = () => {
       />
       
     </Form>
-    <img 
+   
+             {user?.email && <div>  <img 
               src="Images/logo-removebg-preview.png"
               width="100"
               height="100"
               className="d-inline-block align-top rounded-circle"
               alt=""
-            />
+            /><span>welcome {user.email}</span></div> }
 
             <Link to="/login"><button className='btn btn-primary' >Login</button></Link>
+            <Link><button>Sign Out</button></Link>
             
             
             

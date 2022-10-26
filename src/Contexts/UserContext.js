@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
 import app from '../Firebase/Firebase.config'
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect } from 'react';
 
 
 
@@ -20,6 +21,15 @@ const UserContext = ({children}) => {
     const signIn=(email,password)=>{
         return signInWithEmailAndPassword(auth,email,password);
     }
+    useEffect(()=>{
+      const unsubscribe=  onAuthStateChanged(auth,currentUser=>{
+            setUser(currentUser);
+        })
+        return ()=>{
+            unsubscribe();
+        }
+
+    },[])
 
     const [user,setUser]=useState({displayName:'Akash'})
 
