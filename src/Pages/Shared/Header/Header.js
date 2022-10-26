@@ -10,6 +10,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Contexts/UserContext";
 import { useState } from "react";
 import { useEffect } from "react";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
 
@@ -37,6 +42,7 @@ const Header = () => {
         console.log(error);
       });
   };
+
   return (
     <div>
       <Navbar expand="lg" id="backgroundColor">
@@ -102,7 +108,6 @@ const Header = () => {
                 </Nav.Link>
               </Nav.Item>
               <Form>
-              
                 <label class="switch mx-3">
                   <input type="checkbox" id="togBtn" />
                   <div onClick={toggleTheme} class="slider round">
@@ -114,15 +119,15 @@ const Header = () => {
 
               {user?.uid && (
                 <div>
-                  {" "}
-                  <img
-                    src="Images/logo-removebg-preview.png"
-                    width="100"
-                    height="100"
-                    className="d-inline-block align-top rounded-circle"
+
+               
+                  <img data-bs-toggle="tooltip" data-bs-placement="right" title={user.displayName}
+                    src={user.photoURL}
+                    width="50"
+                    height="50"
+                    className="d-inline-block align-top rounded-circle mx-2"
                     alt=""
                   />
-                  <span>welcome {user.email}</span>
                 </div>
               )}
               {user?.uid ? (
