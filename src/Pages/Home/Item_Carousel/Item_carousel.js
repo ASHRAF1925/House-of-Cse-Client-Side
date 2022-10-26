@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './Item_carousel.css'
+import { Link } from "react-router-dom";
 
 export default class Item_carousel extends Component {
   render() {
@@ -31,7 +32,9 @@ export default class Item_carousel extends Component {
                      <Card.Text className="card_title">
                     Ratings :{course.Rating}
                      </Card.Text>
-                     <Button variant="primary" className="text-center">Explore</Button>
+                     <Link to={`/Courses/${course.course_code}`}><Button variant="primary">Enroll</Button></Link>
+                     
+                     
                    </Card.Body>
                  </Card>
                    </div>
