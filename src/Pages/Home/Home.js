@@ -10,6 +10,7 @@ import Card from "react-bootstrap/Card";
 import "./Home.css";
 import { useLoaderData } from "react-router-dom";
 import Item_carousel from "./Item_Carousel/Item_carousel";
+import computer_science from '../../../src/Assets/Images/computerscience.jpg'
 
 
 const Home = () => {
@@ -38,7 +39,7 @@ const Home = () => {
           <Col className="bg-success p-3 rounded-left" lg="4">
             <img
               className="img-fluid"
-              src="Images/computerscience.jpg"
+              src={computer_science}
               alt=""
             />
           </Col>
@@ -66,7 +67,7 @@ const Home = () => {
           <Col className="bg-success p-3 rounded-left" lg="3">
             <img
               className="img-fluid"
-              src="Images/computerscience.jpg"
+              src={computer_science}
               alt=""
             />
           </Col>

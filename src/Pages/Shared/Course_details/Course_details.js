@@ -22,10 +22,7 @@ const Course_details = () => {
       <h1 className="text-center">Welcome to {course_name} Course </h1>
       <h1>{course_image}</h1>
  
-      <Image
-        src="https://media.geeksforgeeks.org/wp-content/uploads/20210425000233/test-300x297.png"
-        rounded
-      />
+      {/* <img alt="timer" src={require('../../../../public/Images/courses image/ai.png')} /> */}
       <h3>Basic Information </h3>
       <h5>Course code : {course_code}</h5>
       <p>Description : {course_description}</p>
