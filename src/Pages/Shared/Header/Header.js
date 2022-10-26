@@ -14,7 +14,7 @@ const Header = () => {
 
   const handlelogout=()=>{
     logout()
-    .then(() => {
+    .then(() => { 
       // Sign-out successful.
       console.log("signout successful")
     }).catch((error) => {
@@ -64,7 +64,7 @@ const Header = () => {
       
     </Form>
    
-             {user?.email && <div>  <img 
+             {user?.uid && <div>  <img 
               src="Images/logo-removebg-preview.png"
               width="100"
               height="100"
@@ -72,7 +72,7 @@ const Header = () => {
               alt=""
             /><span>welcome {user.email}</span></div> }
             {
-              user?.email ?
+              user?.uid?
               <Link><button onClick={handlelogout}>Sign Out</button></Link>
               :
               <Link to="/login"><button className='btn btn-primary' >Login</button></Link>

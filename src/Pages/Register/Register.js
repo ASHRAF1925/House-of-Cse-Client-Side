@@ -11,7 +11,7 @@ let password;
 let confirm_password;
 
 const Register = () => {
-  const {createUseremail,signingoogle}= useContext(AuthContext);
+  const {createUseremail,signingoogle,signingitpop}= useContext(AuthContext);
 
 
   const[password_error,setpassword_error]= useState('');
@@ -89,6 +89,17 @@ const Register = () => {
     });
 
   }
+  const handlegitsignin=()=>{
+    signingitpop()
+    .then((result) => {
+    
+      const user = result.user;
+      console.log(user);
+    }).catch((error) => {
+      console.log(error)
+    });
+
+  }
 
 
   return (
@@ -147,6 +158,7 @@ const Register = () => {
         </Button>
       </Form>
       <button onClick={handlegooglesignin}>google signin</button>
+      <button onClick={handlegitsignin}>git sign in</button>
     </div>
   );
   return <div></div>;
