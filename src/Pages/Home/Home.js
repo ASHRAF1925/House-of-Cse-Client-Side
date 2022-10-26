@@ -22,12 +22,12 @@ const Home = () => {
   return (
     <div className="Home container p-0 ">
       <Carousels></Carousels>
-      <h1>About Us{best_courses.length}</h1>
+      <h1>About Us</h1>
 
       <Container className="my-0 ">
         <Row>
           <Col className="bg-primary p-3 rounded-right" lg="8">
-            <h1>About Us{best_courses.length}</h1>
+            <h1>About Us</h1>
 
             <h4>Welcome to House of CSE!</h4>
             <p>
@@ -61,7 +61,7 @@ const Home = () => {
               gather knowledge{" "}
             </p>
           </Col>
-          <Col className="bg-primary p-3 rounded-right" lg="6">
+          <Col className="bg-primary p-5 rounded-right" lg="6">
             <AutoPlay courses={best_courses}></AutoPlay>
           </Col>
           <Col className="bg-success p-3 rounded-left" lg="3">
@@ -87,9 +87,7 @@ const Home = () => {
           Large button
         </Button>{" "}
       </div>
-      {/* {best_courses.map((course) => {
-                <CarouselItem_for_course></CarouselItem_for_course>
-              })} */}
+   
     </div>
   );
 };
