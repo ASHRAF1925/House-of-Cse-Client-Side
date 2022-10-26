@@ -11,7 +11,7 @@ let password;
 let confirm_password;
 
 const Register = () => {
-  const {createUseremail}= useContext(AuthContext);
+  const {createUseremail,signingoogle}= useContext(AuthContext);
 
 
   const[password_error,setpassword_error]= useState('');
@@ -70,6 +70,25 @@ const Register = () => {
         // ..
       });
   };
+  const handlegooglesignin=()=>{
+    signingoogle()
+    .then((result) => {
+      
+      const user = result.user;
+      console.log(user);
+   
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      console.log(error);
+      // ...
+    });
+
+  }
 
 
   return (
@@ -127,6 +146,7 @@ const Register = () => {
           Login
         </Button>
       </Form>
+      <button onClick={handlegooglesignin}>google signin</button>
     </div>
   );
   return <div></div>;

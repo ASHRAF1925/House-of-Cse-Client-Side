@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 
 
@@ -12,7 +12,8 @@ let password;
 const Login = () => {
 
 
-  const {signIn}=useContext(AuthContext)
+  const {signIn}=useContext(AuthContext);
+  const navigate=useNavigate();
 
 
 
@@ -28,6 +29,7 @@ const Login = () => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
+          navigate('/');
           // ...
         })
         .catch((error) => {

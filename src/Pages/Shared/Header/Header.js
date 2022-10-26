@@ -10,7 +10,17 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/UserContext';
 const Header = () => {
 
-  const {user}=useContext(AuthContext);
+  const {user,logout}=useContext(AuthContext);
+
+  const handlelogout=()=>{
+    logout()
+    .then(() => {
+      // Sign-out successful.
+      console.log("signout successful")
+    }).catch((error) => {
+     console.log(error);
+    });
+  }
     return (
         <div>
         <Navbar expand="lg" id='backgroundColor'>
@@ -61,9 +71,17 @@ const Header = () => {
               className="d-inline-block align-top rounded-circle"
               alt=""
             /><span>welcome {user.email}</span></div> }
+            {
+              user?.email ?
+              <Link><button onClick={handlelogout}>Sign Out</button></Link>
+              :
+              <Link to="/login"><button className='btn btn-primary' >Login</button></Link>
 
-            <Link to="/login"><button className='btn btn-primary' >Login</button></Link>
-            <Link><button>Sign Out</button></Link>
+
+            }
+
+          
+            
             
             
             

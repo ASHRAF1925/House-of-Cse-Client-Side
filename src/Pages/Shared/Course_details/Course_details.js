@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -28,7 +28,9 @@ const Course_details = () => {
       <p>Description : {course_description}</p>
       <h6>Duration : {Duration}</h6>
       <h2>{Rating}</h2>
+      <Link to='/checkout'><button>Checkout</button></Link>
     </div>
+
 
   );
 };
