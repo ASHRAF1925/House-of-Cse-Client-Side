@@ -29,16 +29,16 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav ">
           <Nav variant="pills" defaultActiveKey="/" className="ms-auto my-auto align-items-center ">
           <Nav.Item>
-              <Link eventKey="/" to='/' className="text-decoration-none  text_color mx-3"> Home</Link>
+              <Nav.Link eventKey="/"><Link to='/' className="text-decoration-none  text_color"> Home</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Link eventKey="/Courses" to='/Courses' className="text-decoration-none  text_color mx-3"> Courses</Link>
+              <Nav.Link eventKey="/Courses"><Link to='/Courses' className="text-decoration-none  text_color"> Courses</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Link eventKey="/Blogs" to='/Blogs' className="text-decoration-none  text_color mx-3"> Blogs</Link>
+              <Nav.Link eventKey="/Blogs"><Link to='/Blogs' className="text-decoration-none  text_color"> Blogs</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Link eventKey="/FAQS" to='/FAQS' className="text-decoration-none  text_color mx-3"> FAQS</Link>
+              <Nav.Link eventKey="/FAQS"><Link to='/FAQS' className="text-decoration-none  text_color"> FAQS</Link></Nav.Link>
             </Nav.Item>
             <Form>
       <Form.Check 
