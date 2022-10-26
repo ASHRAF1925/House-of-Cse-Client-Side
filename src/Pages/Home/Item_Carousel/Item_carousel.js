@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './Item_carousel.css'
 
-export default class AutoPlay extends Component {
+export default class Item_carousel extends Component {
   render() {
     const settings = {
       dots: true,
@@ -23,7 +23,7 @@ export default class AutoPlay extends Component {
        
         <Slider {...settings} >
         {best_courses.map(course => 
-                   <div className="mx-4">
+                   <div key={course.course_code} className="mx-4">
                     <Card className="card_height" >
                    <Card.Img className="image_height" variant="top" src={course.course_image} />
                    <Card.Body >

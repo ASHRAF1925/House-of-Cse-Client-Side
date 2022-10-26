@@ -9,8 +9,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Home.css";
 import { useLoaderData } from "react-router-dom";
-
-import AutoPlay from "./Item_Carousel/Item_carousel";
+import Item_carousel from "./Item_Carousel/Item_carousel";
 
 
 const Home = () => {
@@ -62,7 +61,7 @@ const Home = () => {
             </p>
           </Col>
           <Col className="bg-primary p-5 rounded-right" lg="6">
-            <AutoPlay courses={best_courses}></AutoPlay>
+            <Item_carousel courses={best_courses}></Item_carousel>
           </Col>
           <Col className="bg-success p-3 rounded-left" lg="3">
             <img

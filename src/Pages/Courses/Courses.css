@@ -1,3 +1,8 @@
 .course_card{
     background-color: rgb(47, 191, 227);
+    
+}
+.decoration{
+    text-decoration: none;
+    color: black;
 }
