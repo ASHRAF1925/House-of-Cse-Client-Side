@@ -58,7 +58,7 @@ const Course_details = () => {
    
       
       
-      <Link to='/checkout'><button>Checkout</button></Link>
+      <Link to={`/checkout/${course.course_code}`}><button>Checkout</button></Link>
     </div>
 
 

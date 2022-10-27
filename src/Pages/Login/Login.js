@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,12 +11,14 @@ let email;
 let password;
 
 const Login = () => {
+  const [error,setError]=useState('');
+  
 
   const {signIn}=useContext(AuthContext);
   const navigate=useNavigate();
 
   const {signingoogle,signingitpop}= useContext(AuthContext);
-  
+
   const location=useLocation();
   let from =location.state?.from?.pathname || '/';
   console.log("from header",from);
@@ -26,11 +29,14 @@ const Login = () => {
       
       const user = result.user;
       console.log("from google",user);
+      setError('');
       navigate(from,{replace: true});
    
     }).catch((error) => {
+   
 
-      console.log(error);
+      console.log(error.code,error.message);
+      setError(error.message);
 
     });
 
@@ -40,9 +46,11 @@ const Login = () => {
     .then((result) => {
       const user = result.user;
       console.log("from git",user);
+      setError('');
       navigate(from,{replace:true});
     }).catch((error) => {
-      console.log(error)
+      console.log(error.code,error.message);
+      setError(error.message);
     });
 
   }
@@ -64,12 +72,13 @@ const Login = () => {
      
           const user = userCredential.user;
           console.log(from);
+          setError('');
           navigate(from,{replace:true});
      
         })
         .catch((error) => {
- 
-          console.log(error);
+          console.log(error.code,error.message);
+          setError(error.message);
         });
       
 

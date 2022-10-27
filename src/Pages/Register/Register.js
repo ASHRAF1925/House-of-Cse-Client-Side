@@ -5,19 +5,19 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/UserContext";
 
-
 let email;
 let password;
 let confirm_password;
 
 const Register = () => {
-  const {createUseremail,signingoogle,signingitpop}= useContext(AuthContext);
+  const { createUseremail, signingoogle, signingitpop } =
+    useContext(AuthContext);
 
+  const [password_error, setpassword_error] = useState("");
+  const [login_error,setLogin_error]=useState('');
+  const [success, setSuccess] = useState("flase");
 
-  const[password_error,setpassword_error]= useState('');
-  const[success,setSuccess]=useState('flase');
-
-  const handleRegister = event => {
+  const handleRegister = (event) => {
     event.preventDefault();
 
     setSuccess(false);
@@ -26,52 +26,47 @@ const Register = () => {
     event.preventDefault();
     email = event.target.email.value;
     password = event.target.password.value;
-    confirm_password=event.target.passwordconfirm.value;
-    
-    if(!/(?=.*[A-Z])/.test(password)){
+    confirm_password = event.target.passwordconfirm.value;
+
+    if (!/(?=.*[A-Z])/.test(password)) {
       setpassword_error("Please Provide at least one UpperCase letter");
       return;
     }
-    if(password.length<6){
+    if (password.length < 6) {
       setpassword_error("Password length should be more than 6");
       return;
     }
-    if(!/(?=.*[!@#$*])/.test(password))
-    {
+    if (!/(?=.*[!@#$*])/.test(password)) {
       setpassword_error("SPEcial charecter missing");
       return;
     }
-    if(confirm_password!==password){
+    if (confirm_password !== password) {
       setpassword_error("Password Doesnot match");
       return;
-
     }
-    setpassword_error('');
-  
-  
-  
-  
+    setpassword_error("");
+
     createUseremail(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        console.log('working')
+        console.log("working");
+        setLogin_error('');
         setSuccess(true);
         event.target.reset();
-        setSuccess('false');
+        setSuccess("false");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("error", error);
-        setpassword_error(errorMessage)
+        setLogin_error(error.message);
+        setpassword_error(errorMessage);
         // ..
       });
   };
-
-
 
   return (
     <div className="mx-auto w-50 border rounded p-3">
@@ -121,14 +116,11 @@ const Register = () => {
           Does not have any account ? <Link to="/register">Register now!</Link>{" "}
         </p>
         <p> {password_error}</p>
-        {
-          success && <p> User created Successfully </p>
-        }
+        {success && <p> User created Successfully </p>}
         <Button variant="primary" type="submit">
           Register
         </Button>
       </Form>
-     
     </div>
   );
   return <div></div>;
