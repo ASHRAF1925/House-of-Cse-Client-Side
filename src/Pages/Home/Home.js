@@ -76,7 +76,7 @@ const Home = () => {
 
       {/* carousel start  */}
 
-      <div className="my-5">
+      <div className="my-5 container">
         <h1 className="my-5"> Trusted by Over 6000+ Students</h1>
         <p className="my-5">
           We have a fully qualified and very well educated teaching staff,

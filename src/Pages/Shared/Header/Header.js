@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <Navbar expand="lg" id="backgroundColor">
         <div className="d-flex  me-auto container ">
           <div>

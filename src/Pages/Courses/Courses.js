@@ -9,21 +9,21 @@ const Courses = () => {
   const courses = useLoaderData();
 
   return (
-    <Container>
+    <Container >
       <Row>
         <Col lg="5">
           {courses.map(course=> 
             <Link key={course.course_code} className="decoration" to={`/Courses/${course.course_code}`}>
               <div >
-                <Row className="m-3 p-1 course_card rounded">
-                  <Col lg="4">
+                <Row className="mb-3 me-1  course_card ">
+                  <Col lg="6 bg-dark p-0  left_border">
                     <img
-                      className="img-fluid"
+                      className="w-100 rounded-left h-100 "
                       src={course.course_image}
                       alt=""
                     />
                   </Col>
-                  <Col lg="8">
+                  <Col lg="6">
                     <h5>{course.course_name}</h5>
                     <p>Rating: {course.Rating}</p>
                   </Col>
@@ -32,7 +32,7 @@ const Courses = () => {
             </Link>
           )}
         </Col>
-        <Col className="bg-success" lg="7">
+        <Col className="bg-success p-0" lg="7">
           <Outlet></Outlet>
         </Col>
       </Row>

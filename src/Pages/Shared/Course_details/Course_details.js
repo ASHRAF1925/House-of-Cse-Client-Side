@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import { FaPrint } from 'react-icons/fa';
 
 const Course_details = () => {
   const course = useLoaderData();
@@ -17,17 +18,41 @@ const Course_details = () => {
     instructor_id,
     Instructor_name,
   } = course;
+
   return (
-    <div>
-      <h1 className="text-center">Welcome to {course_name} Course </h1>
-      <h1>{course_image}</h1>
- 
-      {/* <img alt="timer" src={require('../../../../public/Images/courses image/ai.png')} /> */}
-      <h3>Basic Information </h3>
-      <h5>Course code : {course_code}</h5>
+    <div className="container p-0">
+      <header >
+      
+         <img className="w-100" src={course_image} alt="" /> 
+         <div className="d-flex p-2 bg-light">
+         <h1 className="text-center position-relative top-0start-50">Welcome to {course_name} Course </h1>
+         <Button variant="outline-primary h-50"><FaPrint/></Button>
+         
+         </div>
+      
+
+      </header>
+
+      <div className="p-3 bg-info">
+        <h3>Basic Informations</h3>
+        <h2>Course Name : {course_name}</h2>
+        <h6>Duration : {Duration}</h6>
+      <h2>Rating :{Rating}</h2>
+        
+      </div>
+      <div className="p-3 bg-warning">
       <p>Description : {course_description}</p>
-      <h6>Duration : {Duration}</h6>
-      <h2>{Rating}</h2>
+        
+      </div>
+
+
+   
+      
+      
+    
+   
+      
+      
       <Link to='/checkout'><button>Checkout</button></Link>
     </div>
 

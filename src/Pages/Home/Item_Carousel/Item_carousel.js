@@ -20,7 +20,7 @@ export default class Item_carousel extends Component {
     const best_courses=this.props.courses;
   
     return (
-      <div >
+      <div className="container" >
        
         <Slider {...settings} >
         {best_courses.map(course => 
