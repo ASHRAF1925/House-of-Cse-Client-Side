@@ -10,7 +10,7 @@ import FAQS from "../Pages/FAQS/FAQS";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Course_details from "../Pages/Shared/Course_details/Course_details";
+import Course_details from "../Pages/Courses/Course_details/Course_details";
 import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([

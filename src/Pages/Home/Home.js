@@ -22,11 +22,11 @@ const Home = () => {
   return (
     <div className="Home container p-0 ">
       <Carousels></Carousels>
-      <h1>About Us</h1>
+      <h1 className="text-center text_back p-3">About Us</h1>
 
-      <Container className="my-0 ">
+      <Container className="my-0 bg-white ">
         <Row>
-          <Col className="bg-primary p-3 rounded-right" lg="8">
+          <Col className="back_2 p-3 rounded-right" lg="8">
             <h1>About Us</h1>
 
             <h4>Welcome to House of CSE!</h4>
@@ -36,7 +36,7 @@ const Home = () => {
               gather knowledge{" "}
             </p>
           </Col>
-          <Col className="bg-success p-3 rounded-left" lg="4">
+          <Col className="bg-info p-3 rounded-left" lg="4">
             <img
               className="img-fluid"
               src={computer_science}
@@ -52,19 +52,19 @@ const Home = () => {
       {/* carousel start  */}
       <Container className="my-0">
         <Row>
-          <Col className="bg-primary p-3 rounded-right" lg="3">
-            <h1>These are the best Courses</h1>
-            <h4>Welcome to House of CSE!</h4>
+          <Col className="bg-dark p-3 rounded-right text-white " lg="3">
+            <h1 className=".text-white">These are the best Courses</h1>
+            
             <p>
               We are offering some courses of Computer Science and
               Technology.Join our courses and learn new things.Explore and
               gather knowledge{" "}
             </p>
           </Col>
-          <Col className="bg-primary p-5 rounded-right" lg="6">
+          <Col className="bg-dark p-5 rounded-right" lg="6">
             <Item_carousel courses={best_courses}></Item_carousel>
           </Col>
-          <Col className="bg-success p-3 rounded-left" lg="3">
+          <Col className="bg-light p-3 rounded-left" lg="3">
             <img
               className="img-fluid"
               src={computer_science}
@@ -76,16 +76,14 @@ const Home = () => {
 
       {/* carousel start  */}
 
-      <div className="my-5 container">
+      <div className="my-5 container text-center text_back p-4">
         <h1 className="my-5"> Trusted by Over 6000+ Students</h1>
         <p className="my-5">
           We have a fully qualified and very well educated teaching staff,
           continuous student counseling, and a very effective and enthusiastic
           student support staff.{" "}
         </p>
-        <Button variant="primary" size="lg" className="my-5">
-          Large button
-        </Button>{" "}
+       
       </div>
    
     </div>

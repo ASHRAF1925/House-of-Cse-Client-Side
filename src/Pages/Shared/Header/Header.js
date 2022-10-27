@@ -46,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container header_background_color mb-5" >
       <Navbar expand="lg" id="backgroundColor">
         <div className="d-flex  me-auto container ">
           <div>
@@ -60,8 +60,8 @@ const Header = () => {
               />
             </Navbar.Brand>
           </div>
-          <Navbar.Brand href="/" className="title">
-            House Of CSE
+          <Navbar.Brand href="/" className="title fw-bold">
+            <h1>House Of CSE</h1>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav " />

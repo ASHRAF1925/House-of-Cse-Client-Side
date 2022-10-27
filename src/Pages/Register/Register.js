@@ -150,10 +150,7 @@ const Register = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check onClick={handleAccepted} type="checkbox" label="Accept Terms and Conditions" />
         </Form.Group>
-        <p>
-          Does not have any account ? <Link to="/register">Register now!</Link>{" "}
-        </p>
-        <p> {password_error}</p>
+     
         {success && <p> User created Successfully </p>}
         <Button variant="primary" type="submit" disabled={!accepted}>
           Register

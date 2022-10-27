@@ -32,7 +32,7 @@ const Courses = () => {
             </Link>
           )}
         </Col>
-        <Col className="bg-success p-0" lg="7">
+        <Col className="nice_bg p-0" lg="7">
           <Outlet></Outlet>
         </Col>
       </Row>

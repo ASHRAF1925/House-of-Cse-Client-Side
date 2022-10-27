@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
+import { FcGoogle } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 
 
 
@@ -92,9 +94,9 @@ const Login = () => {
 
     }
     return (
-    <div className='mx-auto w-50 border rounded p-3'>
+    <div className='mx-auto w-50 border rounded p-3 '>
         <h1>Please Login</h1>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={handleLogin} className="text-center">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" name="email" placeholder="Enter email" />
@@ -105,16 +107,23 @@ const Login = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" name="password" placeholder="Password" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+    
       <p>Does not have any account ? <Link to="/register">Register now!</Link> </p>
-      <Button variant="primary" type="submit">
+      <Button className='mx-5 mb-3 text-center' variant="primary" type="submit">
         Login
       </Button>
     </Form>
-    <button onClick={handlegooglesignin}>google signin</button>
-      <button onClick={handlegitsignin}>git sign in</button>
+    <div className='d-flex'>
+    <Button className='mx-5' onClick={handlegooglesignin} variant="primary" size="lg">
+       <FcGoogle className='me-2'></FcGoogle>Continue With Google
+      </Button>
+      <Button onClick={handlegitsignin} variant="primary" size="lg">
+        <BsGithub></BsGithub> Continue With GitHub
+      </Button>
+    </div>
+ 
+    
+    
     </div>
     );
 };
