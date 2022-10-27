@@ -118,7 +118,9 @@ const Header = () => {
               </Form>
 
               {user?.uid && (
-                <div>
+                <div>{
+                  console.log(user.photoURL)
+                  }
            
 
                

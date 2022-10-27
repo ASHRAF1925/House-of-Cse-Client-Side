@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 
 
@@ -11,33 +11,36 @@ let password;
 
 const Login = () => {
 
+  const {signIn}=useContext(AuthContext);
+  const navigate=useNavigate();
+
   const {signingoogle,signingitpop}= useContext(AuthContext);
+  
+  const location=useLocation();
+  let from =location.state?.from?.pathname || '/';
+  console.log("from header",from);
 
   const handlegooglesignin=()=>{
     signingoogle()
     .then((result) => {
       
       const user = result.user;
-      console.log(user);
+      console.log("from google",user);
+      navigate(from,{replace: true});
    
     }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
+
       console.log(error);
-      // ...
+
     });
 
   }
   const handlegitsignin=()=>{
     signingitpop()
     .then((result) => {
-    
       const user = result.user;
-      console.log(user);
+      console.log("from git",user);
+      navigate(from,{replace:true});
     }).catch((error) => {
       console.log(error)
     });
@@ -45,8 +48,7 @@ const Login = () => {
   }
 
 
-  const {signIn}=useContext(AuthContext);
-  const navigate=useNavigate();
+  
 
 
 
@@ -59,15 +61,14 @@ const Login = () => {
         password=event.target.password.value;
         signIn(email,password)
         .then((userCredential) => {
-          // Signed in 
+     
           const user = userCredential.user;
-          console.log(user);
-          navigate('/');
-          // ...
+          console.log(from);
+          navigate(from,{replace:true});
+     
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+ 
           console.log(error);
         });
       

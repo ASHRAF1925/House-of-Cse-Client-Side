@@ -21,6 +21,7 @@ const UserContext = ({children}) => {
     }
 
     const signIn=(email,password)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email,password);
     }
     useEffect(()=>{
@@ -37,10 +38,12 @@ const UserContext = ({children}) => {
         return signOut(auth);
     }
     const signingoogle=()=>{
+        setLoading(true);
         return signInWithPopup(auth,googleProvider);
 
     }
     const signingitpop=()=>{
+        setLoading(true);
         return signInWithPopup(auth,gitProvider);
     }
 
