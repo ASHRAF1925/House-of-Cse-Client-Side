@@ -4,8 +4,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import { FaPrint } from 'react-icons/fa';
+import ReactToPrint from "react-to-print";
+import { useRef } from "react";
 
 const Course_details = () => {
+
+  const pdfref=useRef();
   const course = useLoaderData();
   const {
     course_code,
@@ -20,13 +24,14 @@ const Course_details = () => {
   } = course;
 
   return (
-    <div className="container p-0">
+    <div ref={pdfref} className="container p-0">
       <header >
       
          <img className="w-100" src={course_image} alt="" /> 
          <div className="d-flex p-2 bg-light">
          <h1 className="text-center position-relative top-0start-50">Welcome to {course_name} Course </h1>
-         <Button variant="outline-primary h-50"><FaPrint/></Button>
+         <ReactToPrint trigger={()=>      <Button variant="outline-primary h-50"><FaPrint/></Button>} content={()=>pdfref.current}></ReactToPrint>
+   
          
          </div>
       

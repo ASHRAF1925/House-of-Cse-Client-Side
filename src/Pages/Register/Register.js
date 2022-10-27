@@ -70,36 +70,7 @@ const Register = () => {
         // ..
       });
   };
-  const handlegooglesignin=()=>{
-    signingoogle()
-    .then((result) => {
-      
-      const user = result.user;
-      console.log(user);
-   
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      console.log(error);
-      // ...
-    });
 
-  }
-  const handlegitsignin=()=>{
-    signingitpop()
-    .then((result) => {
-    
-      const user = result.user;
-      console.log(user);
-    }).catch((error) => {
-      console.log(error)
-    });
-
-  }
 
 
   return (
@@ -154,11 +125,10 @@ const Register = () => {
           success && <p> User created Successfully </p>
         }
         <Button variant="primary" type="submit">
-          Login
+          Register
         </Button>
       </Form>
-      <button onClick={handlegooglesignin}>google signin</button>
-      <button onClick={handlegitsignin}>git sign in</button>
+     
     </div>
   );
   return <div></div>;

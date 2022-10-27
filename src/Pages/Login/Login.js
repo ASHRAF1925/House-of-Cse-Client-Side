@@ -11,6 +11,39 @@ let password;
 
 const Login = () => {
 
+  const {signingoogle,signingitpop}= useContext(AuthContext);
+
+  const handlegooglesignin=()=>{
+    signingoogle()
+    .then((result) => {
+      
+      const user = result.user;
+      console.log(user);
+   
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      console.log(error);
+      // ...
+    });
+
+  }
+  const handlegitsignin=()=>{
+    signingitpop()
+    .then((result) => {
+    
+      const user = result.user;
+      console.log(user);
+    }).catch((error) => {
+      console.log(error)
+    });
+
+  }
+
 
   const {signIn}=useContext(AuthContext);
   const navigate=useNavigate();
@@ -62,6 +95,8 @@ const Login = () => {
         Login
       </Button>
     </Form>
+    <button onClick={handlegooglesignin}>google signin</button>
+      <button onClick={handlegitsignin}>git sign in</button>
     </div>
     );
 };
