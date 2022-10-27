@@ -14,6 +14,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -37,6 +38,7 @@ const Header = () => {
       .then(() => {
         // Sign-out successful.
         console.log("signout successful");
+        toast.success('Successfully Loged out!')
       })
       .catch((error) => {
         console.log(error);

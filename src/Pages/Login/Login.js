@@ -3,15 +3,17 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
+
 
 
 let email;
 let password;
 
 const Login = () => {
-  const [error,setError]=useState('');
+  const [errors,setError]=useState('');
   
 
   const {signIn}=useContext(AuthContext);
@@ -29,6 +31,7 @@ const Login = () => {
       
       const user = result.user;
       console.log("from google",user);
+      toast.success('Successfully log IN!')
       setError('');
       navigate(from,{replace: true});
    
@@ -37,6 +40,7 @@ const Login = () => {
 
       console.log(error.code,error.message);
       setError(error.message);
+      toast.error({errors})
 
     });
 
@@ -47,10 +51,12 @@ const Login = () => {
       const user = result.user;
       console.log("from git",user);
       setError('');
+      toast.success('Successfully log IN!')
       navigate(from,{replace:true});
     }).catch((error) => {
       console.log(error.code,error.message);
       setError(error.message);
+      toast.error({errors})
     });
 
   }
@@ -73,12 +79,14 @@ const Login = () => {
           const user = userCredential.user;
           console.log(from);
           setError('');
+          toast.success('Successfully log IN!')
           navigate(from,{replace:true});
      
         })
         .catch((error) => {
           console.log(error.code,error.message);
           setError(error.message);
+          toast.error({errors})
         });
       
 

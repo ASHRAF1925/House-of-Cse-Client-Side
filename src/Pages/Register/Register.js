@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/UserContext";
 
 let email;
 let password;
 let confirm_password;
+let name;
+let photo;
 
 const Register = () => {
-  const { createUseremail, signingoogle, signingitpop } =
+  const { createUseremail, signingoogle, signingitpop,updateuserInfo } =
     useContext(AuthContext);
-
+    const navigate=useNavigate();
+    
   const [password_error, setpassword_error] = useState("");
   const [login_error,setLogin_error]=useState('');
-  const [success, setSuccess] = useState("flase");
+  const [success, setSuccess] = useState(false);
+  const [accepted,setAccepted]=useState(false);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -27,21 +32,28 @@ const Register = () => {
     email = event.target.email.value;
     password = event.target.password.value;
     confirm_password = event.target.passwordconfirm.value;
+    name=event.target.name.value;
+    photo=event.target.img.value;
 
     if (!/(?=.*[A-Z])/.test(password)) {
       setpassword_error("Please Provide at least one UpperCase letter");
+      toast.error({password_error});
+      
       return;
     }
     if (password.length < 6) {
       setpassword_error("Password length should be more than 6");
+      toast.error({password_error});
       return;
     }
     if (!/(?=.*[!@#$*])/.test(password)) {
       setpassword_error("SPEcial charecter missing");
+      toast.error({password_error});
       return;
     }
     if (confirm_password !== password) {
       setpassword_error("Password Doesnot match");
+      toast.error({password_error});
       return;
     }
     setpassword_error("");
@@ -54,8 +66,14 @@ const Register = () => {
         console.log("working");
         setLogin_error('');
         setSuccess(true);
+        console.log("name",name);
+        console.log("url",photo);
+        handleupdateProfile(name,photo);
         event.target.reset();
-        setSuccess("false");
+        toast.success('Successfully Registered and Loged in !')
+        navigate('/');
+
+        setSuccess(false);
         // ...
       })
       .catch((error) => {
@@ -64,9 +82,29 @@ const Register = () => {
         console.log("error", error);
         setLogin_error(error.message);
         setpassword_error(errorMessage);
+        toast.error({login_error});
         // ..
       });
   };
+
+  const handleAccepted = event=>{
+    setAccepted(event.target.checked);
+
+  }
+  const handleupdateProfile =(name,photourl)=>{
+    const profile={
+      displayName : name,
+      photoURL :photourl
+    }
+    console.log("find in",profile.displayName);
+    updateuserInfo(profile)
+    .then(() => {
+      console.log("updated");
+    }).catch((error) => {
+      console.log("update error",error);
+    });
+
+  }
 
   return (
     <div className="mx-auto w-50 border rounded p-3">
@@ -110,20 +148,20 @@ const Register = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check onClick={handleAccepted} type="checkbox" label="Accept Terms and Conditions" />
         </Form.Group>
         <p>
           Does not have any account ? <Link to="/register">Register now!</Link>{" "}
         </p>
         <p> {password_error}</p>
         {success && <p> User created Successfully </p>}
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={!accepted}>
           Register
         </Button>
       </Form>
     </div>
   );
-  return <div></div>;
+
 };
 
 export default Register;

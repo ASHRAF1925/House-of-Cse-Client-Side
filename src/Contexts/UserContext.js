@@ -2,8 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
 import app from '../Firebase/Firebase.config'
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,7 +15,7 @@ const auth=getAuth(app)
 const UserContext = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
     const gitProvider = new GithubAuthProvider();
-
+  
    const createUseremail=(email,password)=>{
     return createUserWithEmailAndPassword(auth,email,password);
 
@@ -46,11 +47,15 @@ const UserContext = ({children}) => {
         setLoading(true);
         return signInWithPopup(auth,gitProvider);
     }
+    const updateuserInfo =(profile)=>{
+        console.log(profile)
+        return updateProfile(auth.currentUser,profile);
+    }
 
     const [user,setUser]=useState({});
     const [loading,setLoading]=useState(true);
 
-    const authInfo={user,loading,createUseremail,signIn,logout,signingoogle,signingitpop}
+    const authInfo={user,loading,createUseremail,signIn,logout,signingoogle,signingitpop,updateuserInfo}
     return (
        <AuthContext.Provider value={authInfo}>
         {children}

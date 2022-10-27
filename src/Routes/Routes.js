@@ -1,6 +1,7 @@
 
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main/Main";
+import ErrorPage from "../Pages/404/404Page";
 import Blogs from "../Pages/Blogs/Blogs";
 import Checkout from "../Pages/Checkout/Checkout";
 import Courses from "../Pages/Courses/Courses";
@@ -64,6 +65,6 @@ export const routes = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Home></Home>,
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
