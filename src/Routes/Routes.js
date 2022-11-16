@@ -21,21 +21,21 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         loader: () => {
-          return fetch("http://localhost:5000/courses_details");
+          return fetch("https://house-of-cse-server.vercel.app/courses_details");
         },
         element: <Home></Home>,
       },
       {
         path: "/Courses",
         loader: () => {
-          return fetch("http://localhost:5000/courses_details");
+          return fetch("https://house-of-cse-server.vercel.app/courses_details");
         },
         element: <Courses></Courses>,
         children: [
           {
             path: "/Courses",
             loader: () => {
-              return fetch("http://localhost:5000/courses_details");
+              return fetch("https://house-of-cse-server.vercel.app/courses_details");
             },
 
             element: <Courses_list></Courses_list>,
@@ -43,7 +43,7 @@ export const routes = createBrowserRouter([
           {
             path:'/Courses/:id',
             loader: ({params}) => {
-              return fetch(`http://localhost:5000/course/${params.id}`);
+              return fetch(`https://house-of-cse-server.vercel.app/course/${params.id}`);
             },
             element:<Course_details></Course_details>
           }
@@ -57,7 +57,7 @@ export const routes = createBrowserRouter([
       {path:'/checkout/:id',
       loader: ({params}) => {
         console.log(params.id)
-              return fetch(`http://localhost:5000/course/${params.id}`);
+              return fetch(`https://house-of-cse-server.vercel.app/course/${params.id}`);
             },
     element:<PrivateRoute> <Checkout></Checkout> </PrivateRoute>}
   
