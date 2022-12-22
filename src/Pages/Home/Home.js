@@ -1,23 +1,17 @@
 import React from "react";
-import Header from "../Shared/Header/Header";
-import Carousels from "./Carousels/Carousels";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Carousel from "react-bootstrap/Carousel";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import "./Home.css";
 import { useLoaderData } from "react-router-dom";
+import computer_science from "../../../src/Assets/Images/computerscience.jpg";
+import Carousels from "./Carousels/Carousels";
+import "./Home.css";
 import Item_carousel from "./Item_Carousel/Item_carousel";
-import computer_science from '../../../src/Assets/Images/computerscience.jpg'
-
 
 const Home = () => {
   const courses = useLoaderData();
 
   const best_courses = courses.filter((course) => course.Rating > 7);
-
 
   return (
     <div className="Home container p-0 ">
@@ -37,11 +31,7 @@ const Home = () => {
             </p>
           </Col>
           <Col className="bg-info p-3 rounded-left" lg="4">
-            <img
-              className="img-fluid"
-              src={computer_science}
-              alt=""
-            />
+            <img className="img-fluid" src={computer_science} alt="" />
           </Col>
         </Row>
       </Container>
@@ -54,7 +44,7 @@ const Home = () => {
         <Row>
           <Col className="bg-dark p-3 rounded-right text-white " lg="3">
             <h1 className=".text-white">These are the best Courses</h1>
-            
+
             <p>
               We are offering some courses of Computer Science and
               Technology.Join our courses and learn new things.Explore and
@@ -65,11 +55,7 @@ const Home = () => {
             <Item_carousel courses={best_courses}></Item_carousel>
           </Col>
           <Col className="bg-light p-3 rounded-left" lg="3">
-            <img
-              className="img-fluid"
-              src={computer_science}
-              alt=""
-            />
+            <img className="img-fluid" src={computer_science} alt="" />
           </Col>
         </Row>
       </Container>
@@ -83,9 +69,7 @@ const Home = () => {
           continuous student counseling, and a very effective and enthusiastic
           student support staff.{" "}
         </p>
-       
       </div>
-   
     </div>
   );
 };

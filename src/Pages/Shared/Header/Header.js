@@ -1,20 +1,12 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
+import React, { useContext, useEffect, useState } from "react";
+import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import logo from "../../../Assets/Images/logo-removebg-preview.png";
-import "./Header.css";
-import { useContext } from "react";
-import { AuthContext } from "../../../Contexts/UserContext";
-import { useState } from "react";
-import { useEffect } from "react";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import logo from "../../../Assets/Images/logo-removebg-preview.png";
+import { AuthContext } from "../../../Contexts/UserContext";
+import "./Header.css";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -38,7 +30,7 @@ const Header = () => {
       .then(() => {
         // Sign-out successful.
         console.log("signout successful");
-        toast.success('Successfully Loged out!')
+        toast.success("Successfully Loged out!");
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <div className="container header_background_color mb-5" >
+    <div className="container header_background_color mb-5">
       <Navbar expand="lg" id="backgroundColor">
         <div className="d-flex  me-auto container ">
           <div>
@@ -120,13 +112,13 @@ const Header = () => {
               </Form>
 
               {user?.uid && (
-                <div>{
-                  console.log(user.photoURL)
-                  }
-           
+                <div>
+                  {console.log(user.photoURL)}
 
-               
-                  <img data-bs-toggle="tooltip" data-bs-placement="right" title={user.displayName}
+                  <img
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title={user.displayName}
                     src={user.photoURL}
                     width="50"
                     height="50"
