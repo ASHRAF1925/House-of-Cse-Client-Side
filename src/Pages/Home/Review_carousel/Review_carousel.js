@@ -1,12 +1,12 @@
 import AOS from "aos";
 import React, { useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { AiFillStar } from "react-icons/ai";
 import Slider from "react-slick";
 import useWindowDimensions from "../../../Hooks/useWindow";
 import "./Item_carousel.css";
-const Item_carousel = ({ courses }) => {
+
+const Review_carousel = ({ reviews }) => {
   const windowsize = useWindowDimensions();
 
   let slidenumber = 3;
@@ -19,10 +19,10 @@ const Item_carousel = ({ courses }) => {
   } else if (w > 900) {
     slidenumber = 3;
   }
-
   useEffect(() => {
     AOS.init({ duration: 2400 });
   }, []);
+
   console.log(w, slidenumber);
   const settings = {
     dots: true,
@@ -34,32 +34,37 @@ const Item_carousel = ({ courses }) => {
     autoplaySpeed: 2000,
     cssEase: "linear",
   };
-  const best_courses = courses;
-  console.log("here");
+  const reviewss = reviews;
+  console.log(reviews);
 
   return (
     <div className="container">
       <Slider {...settings}>
-        {best_courses.map((course) => (
-          <div key={course.course_code} className="mx-4">
+        {reviewss.map((course) => (
+          <div key={course.id} className="mx-4">
             <div class="item" data-aos="fade-right">
               {" "}
-              <Card className="card_height h-100">
-                <Card.Img
-                  className="image_height"
-                  variant="top"
-                  src={course.course_image}
-                />
-                <Card.Body>
-                  <Card.Title className="card_title">
-                    {course.course_name}
+              <Card className="card_height h-100 text-center">
+                <img
+                  src={course.image}
+                  class="rounded-circle h-50 w-50 mx-auto"
+                  alt="Cinque Terre"
+                ></img>
+                <Card.Body className="mx-auto">
+                  <Card.Title className="card_title mx-auto">
+                    {course.Name}
+                    <p className="text-warning">
+                      <AiFillStar></AiFillStar>
+                      <AiFillStar></AiFillStar>
+                      <AiFillStar></AiFillStar>
+                      <AiFillStar></AiFillStar>
+                      <AiFillStar></AiFillStar>
+                    </p>
                   </Card.Title>
                   <Card.Text className="card_title">
-                    Ratings :{course.Rating}
+                    Comment:
+                    <p>{course.Comment}</p>
                   </Card.Text>
-                  <Link to={`/Courses/${course.course_code}`}>
-                    <Button variant="primary">Enroll</Button>
-                  </Link>
                 </Card.Body>
               </Card>
             </div>
@@ -70,4 +75,4 @@ const Item_carousel = ({ courses }) => {
   );
 };
 
-export default Item_carousel;
+export default Review_carousel;

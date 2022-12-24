@@ -1,0 +1,13 @@
+.image_height{
+    height: 10vhpx;
+    background-color: green;
+}
+.card_height{
+    height: 60vh;
+    width: auto;
+    padding: 3px;
+    margin-left: 20px;
+}
+.card_title{
+    height: 15vh;
+}
